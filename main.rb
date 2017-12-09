@@ -21,7 +21,7 @@ logger.level = Logger::WARN
 @portfolio = JSON.parse(RestClient.get(@account["portfolio"], @api_headers).body)
 
 portfolio_stats = {
-  value: (@portfolio["extended_hours_equity"] || @portfolio["equity"]).to_f.round(2),
+  portfolio_value: (@portfolio["extended_hours_equity"] || @portfolio["equity"]).to_f.round(2),
   at: Time.now
 }.to_json
 
