@@ -57,7 +57,5 @@ portfolio_positions = {
   at: Time.now
 }.to_json
 
-puts "portfolio-stats -> #{portfolio_stats}"
 @kafka.deliver_message(portfolio_stats, topic: "portfolio-stats")
-puts "portfolio-positions -> #{portfolio_positions}"
 @kafka.deliver_message(portfolio_positions, topic: "portfolio-positions")
