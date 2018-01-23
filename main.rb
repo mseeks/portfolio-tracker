@@ -25,7 +25,7 @@ logger.level = Logger::WARN
   position
 end
 
-cash = @account["buying_power"].to_f
+cash = @account["cash"].to_f
 
 portfolio_stats = {
   portfolio_value: (@portfolio["extended_hours_equity"] || @portfolio["equity"]).to_f.round(2),
