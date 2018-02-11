@@ -25,11 +25,6 @@ logger.level = Logger::WARN
   position
 end
 
-portfolio_stats = {
-  portfolio_value: (@portfolio["extended_hours_equity"] || @portfolio["equity"]).to_f.round(2),
-  at: Time.now
-}.to_json
-
 portfolio_positions = {
   positions: @positions.map{|position|
     current_quote_response = JSON.parse(RestClient.get(position["instrument"]["quote"]).body)
@@ -49,5 +44,4 @@ portfolio_positions = {
   at: Time.now
 }.to_json
 
-@kafka.deliver_message(portfolio_stats, topic: "portfolio-stats")
 @kafka.deliver_message(portfolio_positions, topic: "portfolio-positions")
