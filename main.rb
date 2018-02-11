@@ -25,8 +25,6 @@ logger.level = Logger::WARN
   position
 end
 
-cash = @account["cash"].to_f
-
 portfolio_stats = {
   portfolio_value: (@portfolio["extended_hours_equity"] || @portfolio["equity"]).to_f.round(2),
   at: Time.now
@@ -47,13 +45,7 @@ portfolio_positions = {
       quantity: quantity,
       symbol: position["instrument"]["symbol"]
     }
-  }.push({
-    average_buy_price: cash,
-    current_quote: cash,
-    name: "Buying Power",
-    quantity: 1.0,
-    symbol: "CASH"
-  }),
+  },
   at: Time.now
 }.to_json
 
