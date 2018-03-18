@@ -29,9 +29,9 @@ portfolio_positions = {
   positions: @positions.map{|position|
     current_quote_response = JSON.parse(RestClient.get(position["instrument"]["quote"]).body)
     current_quote = current_quote_response["last_extended_hours_trade_price"] || current_quote_response["last_trade_price"]
-    current_quote = current_quote.to_f
-    quantity = position["quantity"].to_f
-    average_buy_price = position["average_buy_price"].to_f
+    current_quote = current_quote
+    quantity = position["quantity"]
+    average_buy_price = position["average_buy_price"]
 
     {
       average_buy_price: average_buy_price,
